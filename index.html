@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-116QNJVVTG"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-116QNJVVTG');
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1215447775986874" crossorigin="anonymous"></script>
+    <meta name="google-site-verification" content="f8V57uA9Qvj693pYqK34qCunDkXwz5y-O5M3q9M6_9I" />
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ほごサポくん｜生活保護・特別障害者手当シミュレーター</title>
+    <style>
+        :root { --main-blue: #3b82f6; --bg-gray: #f8fafc; --text-dark: #1e293b; --accent-red: #ef4444; --success-green: #10b981; --warning-orange: #f59e0b; }
+        body { font-family: sans-serif; background-color: var(--bg-gray); color: var(--text-dark); margin: 0; padding-bottom: 100px; line-height: 1.6; }
+        .container { max-width: 850px; margin: 0 auto; padding: 20px; }
+        .card { background: white; border-radius: 16px; border: 1px solid #e2e8f0; padding: 25px; margin-bottom: 25px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
+        .section-title { color: var(--main-blue); font-weight: bold; font-size: 1.25rem; margin-bottom: 20px; border-bottom: 2px solid #eff6ff; padding-bottom: 10px; }
+        .input-label { font-weight: bold; display: block; margin-bottom: 8px; font-size: 1rem; }
+        .input-sub { font-size: 0.85rem; color: #64748b; font-weight: normal; }
+        input, select, textarea { width: 100%; padding: 14px; border: 1px solid #cbd5e1; border-radius: 8px; box-sizing: border-box; margin-bottom: 20px; font-size: 16px; }
+        .calc-btn, .tel-link { width: 100%; color: white; border: none; padding: 18px; border-radius: 12px; font-size: 1.2rem; font-weight: bold; cursor: pointer; transition: 0.2s; margin-top: 10px; display: block; text-align: center; text-decoration: none; box-sizing: border-box; }
+        .calc-btn:active, .tel-link:active { transform: scale(0.98); }
+        .btn-blue { background: var(--main-blue); box-shadow: 0 4px 0 #2563eb; }
+        .btn-red { background: var(--accent-red); box-shadow: 0 4px 0 #b91c1c; }
+        .btn-green { background: var(--success-green); box-shadow: 0 4px 0 #059669; }
+        .btn-orange { background: var(--warning-orange); box-shadow: 0 4px 0 #d97706; }
+        .result-area { margin-top: 25px; padding: 25px; background: #f0f9ff; border-radius: 15px; border: 2px solid #dbeafe; }
+        .warning-text { color: var(--accent-red); font-size: 0.85rem; text-align: center; margin-top: 15px; font-weight: bold; line-height: 1.5; }
+        .memo-box { display: none; margin-top: 15px; padding: 20px; border: 2px dashed var(--success-green); background: #fff; white-space: pre-wrap; font-size: 0.95rem; }
+        .tab-bar { position: fixed; bottom: 12px; left: 10px; right: 10px; background: white; display: flex; border-radius: 20px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.2); padding: 10px 0; z-index: 1000; border: 1px solid #e2e8f0; }
+        .tab-item { flex: 1; text-align: center; font-size: 0.75rem; color: #94a3b8; cursor: pointer; display: flex; flex-direction: column; align-items: center; }
+        .tab-item.active { color: var(--main-blue); font-weight: bold; }
+        .page { display: none; }
+        .page.active { display: block; }
+        .qa-item { border-bottom: 1px solid #f1f5f9; padding: 15px 0; }
+        .qa-q { font-weight: bold; color: var(--main-blue); display: block; margin-bottom: 5px; }
+        .profile-flex { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; }
+        .profile-icon { font-size: 40px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div id="calc" class="page active">
+        <header style="text-align: center; margin-bottom: 30px;">
+            <h1 style="color:var(--main-blue); font-size: 2.2rem; margin: 0;">ほごサポくん</h1>
+        </header>
+        <div class="card">
+            <div class="section-title">生活保護の目安計算</div>
+            <select id="area">
+                <option value="1.0">1級地（東京23区・大阪市・名古屋市・横浜市など）</option>
+                <option value="0.9">2級地（地方都市・県庁所在地・中核市など）</option>
+                <option value="0.8">3級地（それ以外の町村部・郡部など）</option>
+            </select>
+            <label class="input-label">世帯人数</label><input type="number" id="members" value="1">
+            <label class="input-label">現在の家賃月額 <span class="input-sub">(管理費・共益費除外)</span></label><input type="number" id="rent" placeholder="0">
+            <label class="input-label">毎月の給与総額</label><input type="number" id="salary" placeholder="0">
+            <label class="input-label">年金の月額</label><input type="number" id="pension" placeholder="0">
+            <label class="input-label">その他手当の月額</label><input type="number" id="allowance" placeholder="0">
+            <button class="calc-btn btn-blue" onclick="calculate()">目安金額を判定する</button>
+            <p class="warning-text">※この計算結果はあくまで概算であり、実際の受給を保証するものではありません。</p>
+            <div id="res-box" class="result-area" style="display:none;">
+                <div id="res-text" style="font-size:1.3rem; text-align:center; font-weight:bold;"></div>
+                <div id="res-actions" style="margin-top: 20px; display:none;">
+                    <a href="tel:0120279338" class="tel-link btn-orange">📞 よりそいホットラインに電話する</a>
+                    <button class="calc-btn btn-green" onclick="toggleMemo()">役所の窓口で見せるメモを作る</button>
+                    <div id="memo-content" class="memo-box"></div>
+                </div>
+            </div>
+        </div>
+        <div class="card" style="border-top: 6px solid var(--accent-red);">
+            <div class="section-title" style="color: var(--accent-red);">特別障害者手当チェック</div>
+            <select id="dis_level">
+                <option value="no">当てはまらない</option>
+                <option value="yes">1級相当</option>
+                <option value="heavy">重複障害</option>
+            </select>
+            <select id="status">
+                <option value="home">在宅で生活している</option>
+                <option value="away">施設入所・3ヶ月超の入院</option>
+            </select>
+            <button class="calc-btn btn-red" onclick="checkHandicap()">受給資格を判定する</button>
+            <div id="handi-res" class="result-area" style="display:none; background:#fff5f5; border-color:#feb2b2;"></div>
+        </div>
+    </div>
+    
+    <div id="support" class="page">
+        <div class="card">
+            <div class="section-title">生活再建のための15の支援制度</div>
+            
+            <details class="qa-item">
+
+                    <summary style="font-weight:bold; cursor:pointer;">🏠 住まい・生活の支援（相談先：自立相談支援機関・社協）</summary>
+                    <p style="font-size:0.85rem; padding-top:10px;">
+                        1. 住居確保給付金：家賃補助（自立相談支援機関へ）<br>
+                        2. 生活福祉資金貸付：緊急貸付（お近くの社会福祉協議会へ）<br>
+                        3. 緊急小口資金：少額貸付（社会福祉協議会へ）<br>
+                        4. 離職者支援資金：生活のつなぎ資金（ハローワークと連携）
+                    </p>
+                </details>
+                
+                <details class="qa-item">
+                    <summary style="font-weight:bold; cursor:pointer;">🏥 医療・健康の支援（相談先：健康保険窓口・役所）</summary>
+                    <p style="font-size:0.85rem; padding-top:10px;">
+                        5. 高額療養費制度：医療費の上限設定（加入している保険者へ）<br>
+                        6. 自立支援医療：精神通院の費用軽減（市区町村の障害福祉課へ）<br>
+                        7. 更生医療・育成医療：障害治療費支援（市区町村の障害福祉課へ）
+                    </p>
+                </details>
+                
+                <details class="qa-item">
+                    <summary style="font-weight:bold; cursor:pointer;">👶 子育て・教育の支援（相談先：子育て支援課・学校）</summary>
+                    <p style="font-size:0.85rem; padding-top:10px;">
+                        8. 児童扶養手当：ひとり親への支給（市区町村の子育て支援課へ）<br>
+                        9. 就学援助制度：給食費等の補助（通学先の学校または教育委員会へ）<br>
+                        10. 高校就学支援金：授業料無償化（学校事務室へ）<br>
+                        11. 児童手当：子育て世代への手当（市区町村の子育て支援課へ）
+                    </p>
+                </details>
+                
+                <details class="qa-item">
+                    <summary style="font-weight:bold; cursor:pointer;">💼 仕事・所得の支援（相談先：ハローワーク・年金事務所）</summary>
+                    <p style="font-size:0.85rem; padding-top:10px;">
+                        12. 求職者支援制度：月10万円＋訓練（ハローワークへ）<br>
+                        13. 教育訓練給付金：資格取得補助（ハローワークへ）<br>
+                        14. 障害年金：所得保障（年金事務所へ）<br>
+                        15. 特別障害者手当：重度障害者向け（市区町村の障害福祉課へ）
+                    </p>
+                
+            </details>
+            <p style="font-size: 0.8rem; color: #475569; margin-top: 15px; border-top: 1px solid #e2e8f0; padding-top: 10px;">
+                <b>※どこに相談していいか分からない場合：</b><br>
+                まずは市役所・区役所の<b>「生活保護担当窓口」</b>や<b>「総合相談窓口」</b>へ行ってください。そこで相談内容を伝えれば、必要な担当部署へ必ず繋いでもらえます。
+            </p>
+        </div>
+    </div>
+    <div id="qa" class="page">
+        <div class="card">
+            <div class="section-title">よくある質問 Q&A</div>
+            <div class="qa-item"><span class="qa-q">Q1. 持ち家があっても生活保護は受けられる？</span><p class="qa-a">基本的には可能です。資産価値や住宅ローンの有無によりますが、「そこに住むことで家賃を払わなくて済む」というメリットが大きければ、そのまま住み続けることが認められるケースが多いです。</p></div>
+            <div class="qa-item"><span class="qa-q">Q2. 車を持っていても大丈夫ですか？</span><p class="qa-a">原則として処分が求められますが、公共交通機関が不便な地域での通勤、通院、障害がある方の移動手段として不可欠な場合などは保有が認められることがあります。</p></div>
+            <div class="qa-item"><span class="qa-q">Q3. 借金があっても申請できますか？</span><p class="qa-a">申請自体は全く問題ありません。しかし、保護費の中から借金を返済することは認められていないため、自己破産などの手続きを並行して進めることが一般的です。</p></div>
+            <div class="qa-item"><span class="qa-q">Q4. 親族に知られたくないのですが、連絡は行きますか？</span><p class="qa-a">2021年の運用改正により、音信不通（10年程度）、DV被害、親族が高齢や困窮している等の事情があれば、照会をスキップできるようになりました。</p></div>
+            <div class="qa-item"><span class="qa-q">Q5. 住宅ローンが残っていても受けられる？</span><p class="qa-a">原則として認められません。保護費でローンを払うことは資産形成に当たるためです。基本的には売却を促されます。</p></div>
+            <div class="qa-item"><span class="qa-q">Q6. 外国籍でも受けられますか？</span><p class="qa-a">永住者、定住者、日本人の配偶者などの在留資格をお持ちであれば、日本人とほぼ同様の保護を受けることが可能です。</p></div>
+            <div class="qa-item"><span class="qa-q">Q7. 働いていても受けることは可能ですか？</span><p class="qa-a">可能です。月収が厚生労働省の定める最低生活費を下回っている場合、その不足分を受給できます。</p></div>
+            <div class="qa-item"><span class="qa-q">Q8. 年金を受給していても受けられますか？</span><p class="qa-a">受けられます。年金額が最低生活費に満たない場合、その差額が支給されます。</p></div>
+            <div class="qa-item"><span class="qa-q">Q9. 申請してから決定まで、何日かかりますか？</span><p class="qa-a">原則として14日以内に決定します。調査に時間がかかる場合でも最長で30日以内です。</p></div>
+            <div class="qa-item"><span class="qa-q">Q10. 貯金はいくらまで持てますか？</span><p class="qa-a">概ね、最低生活費の半分程度（数万円程度）以下であることが目安です。</p></div>
+            <div class="qa-item"><span class="qa-q">Q11. 水際作戦（窓口での拒否）をされたら？</span><p class="qa-a">窓口で「相談ではなく申請に来ました」とはっきり伝えましょう。不安なら支援団体の担当者に同行してもらうのが確実です。</p></div>
+            <div class="qa-item"><span class="qa-q">Q12. 生活保護費に税金はかかりますか？</span><p class="qa-a">生活保護費は非課税です。所得税や住民税を払う必要はありません。</p></div>
+            <div class="qa-item"><span class="qa-q">Q13. 医療費はどうなりますか？</span><p class="qa-a">医療扶助により、診察代、手術代、薬代などはすべて無料（自己負担なし）になります。</p></div>
+            <div class="qa-item"><span class="qa-q">Q14. 引越し費用（アパート入居費用）は出ますか？</span><p class="qa-a">福祉事務所の指示や条件を満たせば、敷金・礼金などの実費が支給される場合があります。</p></div>
+            <div class="qa-item"><span class="qa-q">Q15. 窓口に一人で行くのがどうしても不安です。</span><p class="qa-a">各地の支援団体が申請同行を行っています。一人で悩まず、まずは専門家や団体を頼ってください。</p></div>
+            <div class="qa-item">
+                <span class="qa-q">Q16. 窓口に行くとき、何を持って行けばいいですか？</span>
+                <p class="qa-a">
+                    以下のものがあると手続きがスムーズです。<br>
+                    1. <b>本人確認書類</b>（マイナンバーカード、免許証など）<br>
+                    2. <b>預貯金通帳</b>（全口座分、過去数年分）<br>
+                    3. <b>印鑑</b>（認印で可）<br>
+                    4. <b>給与明細や年金証書</b>（収入がわかるもの）<br>
+                    5. <b>賃貸借契約書</b>（家賃がわかるもの）<br>
+                    ※すべて揃っていなくても「まずは相談（申請）に来た」と伝えてください。
+                </p>
+            </div>
+            
+            <div class="qa-item">
+                <span class="qa-q">Q17. 窓口で「申請」を断られそうな時はどう言えばいい？</span>
+                <p class="qa-a">
+                    「相談」だと追い返されることがあるため、明確に<b>「生活保護の申請に来ました」</b>と伝えましょう。<br>
+                    もし「今日は書類がないから無理」「親族に連絡してからにして」と言われても、<b>「申請書をください」「申請の意思は固いです」</b>と伝え、申請書を受け取ることが重要です。保護の開始申請は国民の権利です。
+                </p>
+                <div class="qa-item">
+                    <span class="qa-q">Q18. 窓口での対応が不安な場合、どう備えればいい？</span>
+                    <p class="qa-a">
+                        対応した職員の「部署名・氏名」、および「言われた内容・日時」をメモしておきましょう。また、スマートフォンで「窓口のやり取りを録音する」ことも、自分の権利を守るために有効な手段です（「記録のために録音させてください」と伝えればよりスムーズです）。
+                    </p>
+                    <div class="qa-item">
+    <span class="qa-q">Q19. 支援制度が多すぎて、どれを使えばいいかわかりません。</span>
+    <p class="qa-a">
+        まずは、お住まいの自治体にある<b>「自立相談支援機関」</b>（市役所の生活保護窓口や福祉課から紹介してもらえます）に行ってください。専門の相談員が、あなたの状況に合わせて、上記15制度の中から「今、申請すべきもの」を優先順位をつけて案内してくれます。一人で抱え込まず、まずは「制度を知っている誰か」を頼るのが最短ルートです。
+    </p>
+</div>
+                </div>
+                
+            </div>
+
+    </div>
+    </div> 
+
+</div> 
+    <div id="about" class="page">
+        <div class="card">
+            <div class="section-title">運営者情報・開発の思い</div>
+            <div class="profile-flex">
+                <div class="profile-icon">👤</div>
+                <div class="profile-info">
+                    <b>運営者：ほごサポくん運営事務局（代表：幸福司）</b><br>
+                    <span>社会福祉のアクセシビリティ向上を目指す開発者</span>
+                </div>
+            </div>
+            <p>「幸福司（こうふくじ）」という名前には、一人ひとりが持つ幸せの権利を守る手助けをしたいという願いを込めています。</p>
+            <p>行政の言葉は難しく、助けを求めるのに勇気がいります。このサイトが、まずは匿名で自分の状況を確認し、一歩を踏み出すための地図になることを願っています。</p>
+            <div style="background:#f1f5f9; padding:15px; border-radius:8px; font-size:0.9rem;">
+                <b>【参照データ】</b><br>
+                厚生労働省「生活保護制度の基準について（令和8年度最新改定）」に基づき構築。
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="section-title">利用規約・プライバシーポリシー</div>
+            <div style="font-size: 0.85rem; color: #475569; line-height: 1.7;">
+                <p><b>1. 基本方針:</b> 当事務局は、個人情報の取扱いについて適切に管理を行います。</p>
+                <p><b>2. 広告について:</b> Googleアドセンスを利用しており、Cookieを使用した広告配信が行われることがあります。</p>
+                <p><b>3. アクセス解析:</b> Googleアナリティクスを利用し、匿名でトラフィックデータを収集しています。</p>
+                <p><b>4. 免責事項:</b> 判定結果は概算であり受給を保証しません。利用による損害について当事務局は一切の責任を負いません。必ず福祉事務所へご相談ください。</p>
+                <p><b>5. 禁止事項:</b> 無断転載、不適切なアクセスを禁止します。</p>
+                <p><b>6. 個人情報:</b> お問い合わせ情報は連絡のみに使用し、第三者への提供は行いません。</p>
+                <div style="text-align: right; margin-top: 20px; font-weight: bold;">
+                    制定日：2026年2月16日<br>
+                    ほごサポくん運営事務局 代表：幸福司
+                </div>
+            </div>
+        </div>
+        <div class="card" id="contact">
+            <div class="section-title">お問い合わせ窓口</div>
+            <form action="https://formspree.io/f/hogosapo0000@gmail.com" method="POST">
+                <label class="input-label">メールアドレス</label>
+                <input type="email" name="email" placeholder="example@gmail.com" required>
+                <label class="input-label">お問い合わせ内容</label>
+                <textarea name="message" placeholder="ご質問やご相談内容を入力してください" required style="height: 120px;"></textarea>
+                <button type="submit" class="calc-btn btn-green">内容を送信する</button>
+            </form>
+            <p style="font-size: 0.8rem; color: #64748b; text-align: center; margin-top: 10px;">
+                ※直接メール：hogosapo0000@gmail.com
+            </p>
+        </div>
+        <div style="padding: 20px; font-size: 0.75rem; color: #94a3b8; text-align: center; margin-bottom: 50px;">
+            <p>当サイトの判定結果はあくまで概算であり、実際の受給を保証するものではありません。生活保護の決定は自治体の福祉事務所が行います。
+                本サイトの利用により生じた損害について、当事務局は一切の責任を負いません。必ず公的機関へご相談ください。</p>
+        </div>
+    </div>
+</div>
+
+<nav class="tab-bar">
+    <div class="tab-item active" onclick="showPage('calc', this)">
+        <span style="font-size:1.5rem;">📱</span><span>診断</span>
+    </div>
+    <div class="tab-item" onclick="showPage('support', this)">
+        <span style="font-size:1.5rem;">🏛️</span><span>支援</span>
+    </div>
+    <div class="tab-item" onclick="showPage('qa', this)">
+        <span style="font-size:1.5rem;">❓</span><span>Q&A</span>
+    </div>
+    <div class="tab-item" onclick="showPage('about', this)">
+        <span style="font-size:1.5rem;">👤</span><span>運営/規約</span>
+    </div>
+</nav>
+
+<script>
+    function showPage(pageId, el) {
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        document.querySelectorAll('.tab-item').forEach(t => t.classList.remove('active'));
+        document.getElementById(pageId).classList.add('active');
+        el.classList.add('active');
+        window.scrollTo(0, 0);
+    }
+    function toggleMemo() {
+        const memo = document.getElementById('memo-content');
+        memo.style.display = (memo.style.display === 'none' || memo.style.display === '') ? 'block' : 'none';
+    }
+    function calculate() {
+        const area = parseFloat(document.getElementById('area').value);
+        const members = parseInt(document.getElementById('members').value) || 1;
+        const rent = Number(document.getElementById('rent').value) || 0;
+        const s = Number(document.getElementById('salary').value) || 0;
+        const p = Number(document.getElementById('pension').value) || 0;
+        const a = Number(document.getElementById('allowance').value) || 0;
+        let base = members === 1 ? 76000 : members === 2 ? 123000 : 123000 + (members - 2) * 26000;
+        let livingStandard = base * area;
+        let rentCap = (area === 1.0 ? 53700 : 42000) * (members >= 2 ? 1.2 : 1);
+        let allowedRent = Math.min(rent, rentCap);
+        let income = Math.max(0, s - 15000) + p + a;
+        let result = (livingStandard + allowedRent) - income;
+        const resBox = document.getElementById('res-box');
+        resBox.style.display = 'block';
+        if(result > 0) {
+            document.getElementById('res-text').innerHTML = `受給の目安額：<br><span style="font-size: 1.8rem; color: var(--accent-red);">月額 約${Math.floor(result).toLocaleString()}円</span>`;
+            document.getElementById('res-actions').style.display = 'block';
+            document.getElementById('memo-content').innerText = `【生活保護相談用メモ】\n・世帯：${members}人\n・家賃：${rent.toLocaleString()}円\n・月収合計：${(s+p+a).toLocaleString()}円\nシミュレーターでの不足額：約${Math.floor(result).toLocaleString()}円\n窓口でこのメモを提示してください。`;
+        } else {
+            document.getElementById('res-text').innerHTML = "現在の収入が最低生活費の基準を上回っている可能性があります。";
+            document.getElementById('res-actions').style.display = 'none';
+        }
+        resBox.scrollIntoView({behavior: 'smooth', block: 'center'});
+    }
+    function checkHandicap() {
+        const level = document.getElementById('dis_level').value;
+        const status = document.getElementById('status').value;
+        const resBox = document.getElementById('handi-res');
+        resBox.style.display = 'block';
+        if (status === 'away') {
+            resBox.innerHTML = `<b style="color:var(--accent-red);">判定：対象外</b><br><small>施設入所中や3ヶ月を超える入院中は受給できません。</small>`;
+        } else if (level !== 'no') {
+            resBox.innerHTML = `<b style="color:var(--success-green); font-size:1.2rem;">判定：受給の可能性が高いです！</b><br><p style="margin-top:10px;">支給目安：<b>月額 28,840円</b><br><small>※令和8年度基準。所得制限があります。</small></p>`;
+        } else {
+            resBox.innerHTML = `<b>判定：対象外</b><br><small>1級相当の重度障害がある方が対象の制度です。</small>`;
+        }
+        resBox.scrollIntoView({behavior: 'smooth', block: 'center'});
+    }
+</script>
+</body>
+</html>
