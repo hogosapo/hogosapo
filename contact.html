@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>お問い合わせ窓口｜ほごサポくん</title>
+    <style>
+        :root { --main-blue: #3b82f6; --bg-gray: #f8fafc; --text-dark: #1e293b; --success-green: #10b981; }
+        body { font-family: sans-serif; background-color: var(--bg-gray); color: var(--text-dark); margin: 0; padding-bottom: 160px; line-height: 1.6; }
+        .container { max-width: 850px; margin: 0 auto; padding: 20px; }
+        .card { background: white; border-radius: 16px; border: 1px solid #e2e8f0; padding: 25px; margin-bottom: 25px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
+        .section-title { color: var(--main-blue); font-weight: bold; font-size: 1.25rem; margin-bottom: 20px; border-bottom: 2px solid #eff6ff; padding-bottom: 10px; }
+        
+        /* フォームのスタイル */
+        .form-label { font-weight: bold; display: block; margin-bottom: 8px; font-size: 0.9rem; }
+        input[type="email"], textarea { width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px; box-sizing: border-box; margin-bottom: 20px; font-size: 16px; font-family: inherit; }
+        textarea { min-height: 150px; resize: vertical; }
+        .submit-btn { width: 100%; background: var(--success-green); color: white; border: none; padding: 18px; border-radius: 12px; font-size: 1.2rem; font-weight: bold; cursor: pointer; transition: 0.2s; box-shadow: 0 4px 0 #059669; }
+        .submit-btn:active { transform: translateY(2px); box-shadow: 0 2px 0 #059669; }
+        
+        .form-note { text-align: center; font-size: 0.8rem; color: #64748b; margin-top: 15px; line-height: 1.5; }
+        .footer-disclaimer { text-align: center; font-size: 0.75rem; color: #94a3b8; margin-top: 40px; padding: 0 10px; line-height: 1.6; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <div class="section-title">お問い合わせ窓口</div>
+        
+        <form action="#" method="post" onsubmit="alert('これはサンプル画面です。実際の送信機能にはサーバー設定が必要です。'); return false;">
+            <label class="form-label">メールアドレス</label>
+            <input type="email" placeholder="example@mail.com" required>
+
+            <label class="form-label">お問い合わせ内容</label>
+            <textarea placeholder="ご質問やご相談内容を入力してください" required></textarea>
+
+            <button type="submit" class="submit-btn">内容を送信する</button>
+        </form>
+
+        <div class="form-note">
+            ※お問い合わせ内容は運営者が確認後、順次返信いたします。<br>
+            営業・勧誘目的の送信はご遠慮ください。
+        </div>
+    </div>
+
+    <div class="footer-disclaimer">
+        当サイトの判定結果はあくまで概算であり、実際の受給を保証するものではありません。生活保護の決定は自治体の福祉事務所が行います。本サイトの利用により生じた損害について、当事務局は一切の責任を負いません。必ず公的機関へご相談ください。
+    </div>
+</div>
+
+<style>
+    body { padding-bottom: 160px !important; }
+    .footer-menu { position: fixed; bottom: 12px; left: 10px; right: 10px; background: white; display: flex; flex-direction: column; border-radius: 20px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.3); padding: 12px 0; z-index: 1000; border: 1px solid #e2e8f0; }
+    .menu-row { display: flex; width: 100%; justify-content: space-around; }
+    .menu-row.main { border-bottom: 1px solid #f1f5f9; padding-bottom: 10px; margin-bottom: 8px; }
+    .menu-row.sub { padding: 0 10%; }
+    .menu-item { flex: 1; text-align: center; font-size: 0.65rem; color: #94a3b8; text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+    .menu-item.active { color: #3b82f6 !important; font-weight: bold; }
+    .menu-item span:first-child { font-size: 1.1rem; }
+</style>
+<div class="footer-menu">
+    <div class="menu-row main">
+        <a href="index.html" class="menu-item" id="nav-index"><span>📱</span><span>診断</span></a>
+        <a href="support.html" class="menu-item" id="nav-support"><span>🏛️</span><span>支援</span></a>
+        <a href="qa.html" class="menu-item" id="nav-qa"><span>❓</span><span>Q&A</span></a>
+        <a href="column.html" class="menu-item" id="nav-column"><span>✍️</span><span>コラム</span></a>
+    </div>
+    <div class="menu-row sub">
+        <a href="about.html" class="menu-item" id="nav-about"><span>👤</span><span>運営</span></a>
+        <a href="privacy.html" class="menu-item" id="nav-privacy"><span>📜</span><span>規約/ポリシー</span></a>
+        <a href="contact.html" class="menu-item" id="nav-contact"><span>📧</span><span>問合せ</span></a>
+    </div>
+</div>
+<script>
+    (function() {
+        const fileName = window.location.pathname.split("/").pop() || "index.html";
+        const cleanName = fileName.replace(".html", "");
+        const activeNav = document.getElementById("nav-" + cleanName);
+        if (activeNav) activeNav.classList.add("active");
+    })();
+</script>
+</body>
+</html>

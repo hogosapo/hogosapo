@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>運営者情報｜ほごサポくん</title>
+    <style>
+        :root { --main-blue: #3b82f6; --bg-gray: #f8fafc; --text-dark: #1e293b; }
+        body { font-family: sans-serif; background-color: var(--bg-gray); color: var(--text-dark); margin: 0; padding-bottom: 160px; line-height: 1.7; }
+        .container { max-width: 850px; margin: 0 auto; padding: 20px; }
+        .card { background: white; border-radius: 16px; border: 1px solid #e2e8f0; padding: 30px; margin-bottom: 25px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
+        .profile-header { text-align: center; margin-bottom: 30px; }
+        .profile-icon { font-size: 4rem; margin-bottom: 10px; display: block; }
+        .name { font-size: 1.5rem; font-weight: bold; color: var(--main-blue); }
+        .title { font-size: 0.9rem; color: #64748b; margin-top: 5px; }
+        
+        h2 { font-size: 1.1rem; margin-top: 30px; color: var(--text-dark); border-left: 4px solid var(--main-blue); padding-left: 12px; }
+        p { font-size: 0.95rem; margin-bottom: 15px; color: #334155; }
+        .concept-box { background: #eff6ff; border-radius: 12px; padding: 20px; margin-top: 20px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <div class="profile-header">
+            <span class="profile-icon">👤</span>
+            <div class="name">福田 司</div>
+            <div class="title">ほごサポくん 運営責任者</div>
+        </div>
+
+        <h2>サイト運営の目的</h2>
+        <p>「ほごサポくん」は、生活に困窮している方が、本来受けられるべき支援（生活保護や自立支援制度）を正しく理解し、スムーズに活用できるようサポートするために立ち上げたサイトです。</p>
+
+        <h2>運営者の想い</h2>
+        <p>生活保護という制度は、憲法で認められた「健康で文化的な最低限度の生活」を守るための大切な仕組みです。しかし、世の中には誤解や偏見、あるいは複雑な手続きが原因で、申請をためらっている方が少なくありません。</p>
+        <p>私自身、このサイトを通じて「自立への一歩」を踏み出すきっかけを提供したいと考えています。借金、家族との関係、資産の不安など、一人で抱え込まずに済む社会を目指しています。</p>
+
+        <div class="concept-box">
+            <strong>✅ 当サイトのモットー</strong><br>
+            ・法律に基づいた正しい情報の提供<br>
+            ・不安に寄り添ったわかりやすい解説<br>
+            ・自立に向けた具体的なロードマップの提示
+        </div>
+        
+        <div style="margin-top: 40px; text-align: center;">
+            <a href="contact.html" style="color: var(--main-blue); text-decoration: none; font-size: 0.9rem; font-weight: bold;">
+                お問合せはこちらから ➔
+            </a>
+        </div>
+    </div>
+</div>
+
+<style>
+    body { padding-bottom: 160px !important; }
+    .footer-menu { position: fixed; bottom: 12px; left: 10px; right: 10px; background: white; display: flex; flex-direction: column; border-radius: 20px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.3); padding: 12px 0; z-index: 1000; border: 1px solid #e2e8f0; }
+    .menu-row { display: flex; width: 100%; justify-content: space-around; }
+    .menu-row.main { border-bottom: 1px solid #f1f5f9; padding-bottom: 10px; margin-bottom: 8px; }
+    .menu-row.sub { padding: 0 10%; }
+    .menu-item { flex: 1; text-align: center; font-size: 0.65rem; color: #94a3b8; text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+    .menu-item.active { color: #3b82f6 !important; font-weight: bold; }
+    .menu-item span:first-child { font-size: 1.1rem; }
+</style>
+<div class="footer-menu">
+    <div class="menu-row main">
+        <a href="index.html" class="menu-item" id="nav-index"><span>📱</span><span>診断</span></a>
+        <a href="support.html" class="menu-item" id="nav-support"><span>🏛️</span><span>支援</span></a>
+        <a href="qa.html" class="menu-item" id="nav-qa"><span>❓</span><span>Q&A</span></a>
+        <a href="column.html" class="menu-item" id="nav-column"><span>✍️</span><span>コラム</span></a>
+    </div>
+    <div class="menu-row sub">
+        <a href="about.html" class="menu-item" id="nav-about"><span>👤</span><span>運営</span></a>
+        <a href="privacy.html" class="menu-item" id="nav-privacy"><span>📜</span><span>規約/ポリシー</span></a>
+        <a href="contact.html" class="menu-item" id="nav-contact"><span>📧</span><span>問合せ</span></a>
+    </div>
+</div>
+<script>
+    (function() {
+        const fileName = window.location.pathname.split("/").pop() || "index.html";
+        const cleanName = fileName.replace(".html", "");
+        const activeNav = document.getElementById("nav-" + cleanName);
+        if (activeNav) activeNav.classList.add("active");
+    })();
+</script>
+</body>
+</html>

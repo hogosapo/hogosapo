@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>住宅扶助（家賃補助）の仕組み｜ほごサポくん</title>
+    <style>
+        :root { --main-blue: #3b82f6; --bg-gray: #f8fafc; --text-dark: #1e293b; }
+        body { font-family: sans-serif; background-color: var(--bg-gray); color: var(--text-dark); margin: 0; padding-bottom: 160px; line-height: 1.7; }
+        .container { max-width: 850px; margin: 0 auto; padding: 20px; }
+        .card { background: white; border-radius: 16px; border: 1px solid #e2e8f0; padding: 25px; margin-bottom: 25px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
+        h1 { color: var(--main-blue); font-size: 1.3rem; margin-bottom: 20px; border-bottom: 2px solid #eff6ff; padding-bottom: 10px; }
+        h2 { font-size: 1.1rem; margin-top: 25px; color: var(--text-dark); border-left: 4px solid var(--main-blue); padding-left: 10px; }
+        p { font-size: 0.95rem; margin-bottom: 15px; }
+        .info-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.9rem; }
+        .info-table th, .info-table td { border: 1px solid #e2e8f0; padding: 12px; text-align: left; }
+        .info-table th { background: #f8fafc; color: var(--main-blue); }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <h1>第2回：住宅扶助（家賃補助）の仕組みと上限</h1>
+        <p>生活保護費には、食費などの生活費とは別に「家賃分」として支給される「住宅扶助」があります。</p>
+
+        <h2>1. 家賃は「実費」が支給される</h2>
+        <p>住宅扶助は、上限額の範囲内であれば、実際にかかっている家賃がそのまま支給されます。共益費や管理費は含まれず、あくまで「純粋な家賃」が対象です。</p>
+
+        <h2>2. 地域によって異なる上限額</h2>
+        <p>上限額（基準額）は、お住まいの地域や世帯人数によって細かく決まっています。これを「級地制度」と呼びます。</p>
+
+        <table class="info-table">
+            <tr>
+                <th>地域例</th>
+                <th>単身世帯の上限目安</th>
+            </tr>
+            <tr>
+                <td>東京都区部など（1級地）</td>
+                <td>約53,700円</td>
+            </tr>
+            <tr>
+                <td>地方都市など（2級地）</td>
+                <td>約40,000円〜</td>
+            </tr>
+        </table>
+
+        <h2>3. 上限を超えている場合は？</h2>
+        <p>現在住んでいる家の家賃が上限を超えている場合、すぐに追い出されるわけではありません。転居指導が行われる際、その引っ越し費用は役所から支給されます。</p>
+
+        <div style="margin-top: 30px; border-top: 1px dashed #e2e8f0; padding-top: 20px; text-align: center;">
+            <a href="column.html" style="display: inline-block; background: #94a3b8; color: white; padding: 10px 30px; border-radius: 30px; text-decoration: none; font-size: 0.9rem; font-weight: bold;">
+                ← コラム一覧に戻る
+            </a>
+        </div>
+    </div>
+</div>
+
+<style>
+    body { padding-bottom: 160px !important; }
+    .footer-menu { position: fixed; bottom: 12px; left: 10px; right: 10px; background: white; display: flex; flex-direction: column; border-radius: 20px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.3); padding: 12px 0; z-index: 1000; border: 1px solid #e2e8f0; }
+    .menu-row { display: flex; width: 100%; justify-content: space-around; }
+    .menu-row.main { border-bottom: 1px solid #f1f5f9; padding-bottom: 10px; margin-bottom: 8px; }
+    .menu-row.sub { padding: 0 10%; }
+    .menu-item { flex: 1; text-align: center; font-size: 0.65rem; color: #94a3b8; text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+    .menu-item.active { color: #3b82f6 !important; font-weight: bold; }
+    .menu-item span:first-child { font-size: 1.1rem; }
+</style>
+<div class="footer-menu">
+    <div class="menu-row main">
+        <a href="index.html" class="menu-item" id="nav-index"><span>📱</span><span>診断</span></a>
+        <a href="support.html" class="menu-item" id="nav-support"><span>🏛️</span><span>支援</span></a>
+        <a href="qa.html" class="menu-item" id="nav-qa"><span>❓</span><span>Q&A</span></a>
+        <a href="column.html" class="menu-item" id="nav-column"><span>✍️</span><span>コラム</span></a>
+    </div>
+    <div class="menu-row sub">
+        <a href="about.html" class="menu-item" id="nav-about"><span>👤</span><span>運営</span></a>
+        <a href="privacy.html" class="menu-item" id="nav-privacy"><span>📜</span><span>規約/ポリシー</span></a>
+        <a href="contact.html" class="menu-item" id="nav-contact"><span>📧</span><span>問合せ</span></a>
+    </div>
+</div>
+<script>
+    (function() {
+        const fileName = window.location.pathname.split("/").pop() || "index.html";
+        const cleanName = fileName.replace(".html", "").replace(/\d+/, "");
+        const activeNav = document.getElementById("nav-" + (cleanName.includes('column') ? 'column' : cleanName));
+        if (activeNav) activeNav.classList.add("active");
+    })();
+</script>
+</body>
+</html>

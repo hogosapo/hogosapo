@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>支援制度一覧｜ほごサポくん</title>
+<style>
+    :root { --main-blue: #3b82f6; --bg-gray: #f8fafc; --text-dark: #1e293b; }
+    body { font-family: sans-serif; background-color: var(--bg-gray); color: var(--text-dark); margin: 0; padding-bottom: 100px; line-height: 1.6; }
+    .container { max-width: 850px; margin: 0 auto; padding: 20px; }
+    .card { background: white; border-radius: 16px; border: 1px solid #e2e8f0; padding: 25px; margin-bottom: 25px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
+    .section-title { color: var(--main-blue); font-weight: bold; font-size: 1.25rem; margin-bottom: 20px; border-bottom: 2px solid #eff6ff; padding-bottom: 10px; }
+    .qa-item { border-bottom: 1px solid #f1f5f9; padding: 15px 0; }
+    .tab-bar { position: fixed; bottom: 12px; left: 10px; right: 10px; background: white; display: flex; border-radius: 20px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.2); padding: 10px 0; z-index: 1000; border: 1px solid #e2e8f0; }
+    .tab-item { flex: 1; text-align: center; font-size: 0.65rem; color: #94a3b8; text-decoration: none; display: flex; flex-direction: column; align-items: center; }
+    .tab-item.active { color: var(--main-blue); font-weight: bold; }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <div class="section-title">生活再建のための15の支援制度</div>
+        <details class="qa-item">
+            <summary style="font-weight:bold; cursor:pointer;">🏠 住まい・生活の支援</summary>
+            <p style="font-size:0.85rem; padding-top:10px;">
+                1. 住居確保給付金：家賃補助（自立相談支援機関へ）<br>
+                2. 生活福祉資金貸付：緊急貸付（社会福祉協議会へ）<br>
+                3. 緊急小口資金：少額貸付（社会福祉協議会へ）<br>
+                4. 離職者支援資金：生活のつなぎ資金（ハローワークと連携）
+            </p>
+        </details>
+        <details class="qa-item">
+            <summary style="font-weight:bold; cursor:pointer;">🏥 医療・健康の支援</summary>
+            <p style="font-size:0.85rem; padding-top:10px;">
+                5. 高額療養費制度：医療費の上限設定（保険者へ）<br>
+                6. 自立支援医療：精神通院の費用軽減（障害福祉課へ）<br>
+                7. 更生医療・育成医療：障害治療費支援（障害福祉課へ）
+            </p>
+        </details>
+        <details class="qa-item">
+            <summary style="font-weight:bold; cursor:pointer;">👶 子育て・教育の支援</summary>
+            <p style="font-size:0.85rem; padding-top:10px;">
+                8. 児童扶養手当：ひとり親への支給（子育て支援課へ）<br>
+                9. 就学援助制度：給食費等の補助（学校等へ）<br>
+                10. 高校就学支援金：授業料無償化（学校へ）<br>
+                11. 児童手当：子育て世代への手当（子育て支援課へ）
+            </p>
+        </details>
+        <details class="qa-item">
+            <summary style="font-weight:bold; cursor:pointer;">💼 仕事・所得の支援</summary>
+            <p style="font-size:0.85rem; padding-top:10px;">
+                12. 求職者支援制度：月10万円＋訓練（ハローワークへ）<br>
+                13. 教育訓練給付金：資格取得補助（ハローワークへ）<br>
+                14. 障害年金：所得保障（年金事務所へ）<br>
+                15. 特別障害者手当：重度障害者向け（障害福祉課へ）
+            </p>
+        </details>
+        <p style="font-size: 0.8rem; color: #475569; margin-top: 15px; border-top: 1px solid #e2e8f0; padding-top: 10px;">
+            <b>※どこに相談していいか分からない場合：</b><br>
+            まずは市役所・区役所の<b>「生活保護担当窓口」</b>や<b>「総合相談窓口」</b>へ行ってください。
+        </p>
+    </div>
+</div>
+<style>
+    /* 画面下の余白を確保 */
+    body { padding-bottom: 160px !important; }
+
+    .footer-menu { 
+        position: fixed; bottom: 12px; left: 10px; right: 10px; 
+        background: white; display: flex; flex-direction: column; 
+        border-radius: 20px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.3); 
+        padding: 12px 0; z-index: 1000; border: 1px solid #e2e8f0; 
+    }
+    .menu-row { display: flex; width: 100%; justify-content: space-around; }
+    .menu-row.main { border-bottom: 1px solid #f1f5f9; padding-bottom: 10px; margin-bottom: 8px; }
+    .menu-row.sub { padding: 0 10%; }
+    .menu-item { 
+        flex: 1; text-align: center; font-size: 0.65rem; color: #94a3b8; 
+        text-decoration: none; display: flex; flex-direction: column; 
+        align-items: center; gap: 4px; 
+    }
+    /* 今開いているページを青くする設定 */
+    .menu-item.active { color: #3b82f6 !important; font-weight: bold; }
+    .menu-item span:first-child { font-size: 1.1rem; }
+    .menu-row.sub .menu-item { font-size: 0.6rem; }
+</style>
+
+<div class="footer-menu">
+    <div class="menu-row main">
+        <a href="index.html" class="menu-item" id="nav-index"><span>📱</span><span>診断</span></a>
+        <a href="support.html" class="menu-item" id="nav-support"><span>🏛️</span><span>支援</span></a>
+        <a href="qa.html" class="menu-item" id="nav-qa"><span>❓</span><span>Q&A</span></a>
+        <a href="column.html" class="menu-item" id="nav-column"><span>✍️</span><span>コラム</span></a>
+    </div>
+    <div class="menu-row sub">
+        <a href="about.html" class="menu-item" id="nav-about"><span>👤</span><span>運営</span></a>
+        <a href="privacy.html" class="menu-item" id="nav-privacy"><span>📜</span><span>規約/ポリシー</span></a>
+        <a href="contact.html" class="menu-item" id="nav-contact"><span>📧</span><span>問合せ</span></a>
+    </div>
+</div>
+
+<script>
+    // 今開いているファイル名に合わせてボタンを自動で青くする
+    (function() {
+        const fileName = window.location.pathname.split("/").pop() || "index.html";
+        const cleanName = fileName.replace(".html", "");
+        const activeNav = document.getElementById("nav-" + cleanName);
+        if (activeNav) {
+            activeNav.classList.add("active");
+        } else if (fileName === "" || fileName === "/") {
+            document.getElementById("nav-index").classList.add("active");
+        }
+    })();
+</script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>借金があっても申請できる？｜ほごサポくん</title>
+    <style>
+        :root { --main-blue: #3b82f6; --bg-gray: #f8fafc; --text-dark: #1e293b; }
+        body { font-family: sans-serif; background-color: var(--bg-gray); color: var(--text-dark); margin: 0; padding-bottom: 160px; line-height: 1.7; }
+        .container { max-width: 850px; margin: 0 auto; padding: 20px; }
+        .card { background: white; border-radius: 16px; border: 1px solid #e2e8f0; padding: 25px; margin-bottom: 25px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
+        h1 { color: var(--main-blue); font-size: 1.3rem; margin-bottom: 20px; border-bottom: 2px solid #eff6ff; padding-bottom: 10px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <h1>第5回：借金があっても生活保護は申請できる？</h1>
+        <p>借金があることは、生活保護の申請を拒否する理由にはなりません。</p>
+        <p>ただし、支給された保護費を借金の返済に充てることは禁止されています。通常は自己破産などの債務整理とセットで進めることになります。</p>
+        <div style="margin-top: 30px; border-top: 1px dashed #e2e8f0; padding-top: 20px; text-align: center;">
+            <a href="column.html" style="display: inline-block; background: #94a3b8; color: white; padding: 10px 30px; border-radius: 30px; text-decoration: none; font-size: 0.9rem; font-weight: bold;">← コラム一覧に戻る</a>
+        </div>
+    </div>
+</div>
+<div class="footer-menu">
+    <div class="menu-row main">
+        <a href="index.html" class="menu-item" id="nav-index"><span>📱</span><span>診断</span></a>
+        <a href="support.html" class="menu-item" id="nav-support"><span>🏛️</span><span>支援</span></a>
+        <a href="qa.html" class="menu-item" id="nav-qa"><span>❓</span><span>Q&A</span></a>
+        <a href="column.html" class="menu-item" id="nav-column"><span>✍️</span><span>コラム</span></a>
+    </div>
+    <div class="menu-row sub">
+        <a href="about.html" class="menu-item" id="nav-about"><span>👤</span><span>運営</span></a>
+        <a href="privacy.html" class="menu-item" id="nav-privacy"><span>📜</span><span>規約/ポリシー</span></a>
+        <a href="contact.html" class="menu-item" id="nav-contact"><span>📧</span><span>問合せ</span></a>
+    </div>
+</div>
+<style>
+    body { padding-bottom: 160px !important; }
+    .footer-menu { position: fixed; bottom: 12px; left: 10px; right: 10px; background: white; display: flex; flex-direction: column; border-radius: 20px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.3); padding: 12px 0; z-index: 1000; border: 1px solid #e2e8f0; }
+    .menu-row { display: flex; width: 100%; justify-content: space-around; }
+    .menu-row.main { border-bottom: 1px solid #f1f5f9; padding-bottom: 10px; margin-bottom: 8px; }
+    .menu-row.sub { padding: 0 10%; }
+    .menu-item { flex: 1; text-align: center; font-size: 0.65rem; color: #94a3b8; text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+    .menu-item.active { color: #3b82f6 !important; font-weight: bold; }
+    .menu-item span:first-child { font-size: 1.1rem; }
+</style>
+<script>
+    (function() {
+        const fileName = window.location.pathname.split("/").pop() || "index.html";
+        const cleanName = fileName.replace(".html", "").replace(/\d+/, "");
+        const activeNav = document.getElementById("nav-" + (cleanName.includes('column') ? 'column' : cleanName));
+        if (activeNav) activeNav.classList.add("active");
+    })();
+</script>
+</body>
+</html>
